@@ -1,0 +1,2716 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="description" content="Juan Farias — Desenvolvedor Front-end especializado em Landing Pages.">
+
+<title>Juan Farias — Front-end Developer</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link
+href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap"
+rel="stylesheet"
+>
+
+<style>
+
+/* =========================================================
+RESET
+========================================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#050505;
+    color:#f5f5f3;
+    font-family:"Inter",sans-serif;
+    overflow-x:hidden;
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+img{
+    display:block;
+    max-width:100%;
+}
+
+::selection{
+    background:#fff;
+    color:#000;
+}
+
+
+/* =========================================================
+NOISE
+========================================================= */
+
+body::before{
+
+    content:"";
+
+    position:fixed;
+
+    inset:0;
+
+    pointer-events:none;
+
+    z-index:1000;
+
+    opacity:.022;
+
+    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+
+/* =========================================================
+LAYOUT
+========================================================= */
+
+.container{
+    width:min(1180px,88%);
+    margin:auto;
+}
+
+
+/* =========================================================
+HEADER
+========================================================= */
+
+header{
+    height:76px;
+    border-bottom:1px solid #222;
+}
+
+.header-inner{
+    width:min(1180px,88%);
+    height:100%;
+    margin:auto;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.logo{
+    font-family:"DM Mono",monospace;
+    font-size:13px;
+}
+
+.logo span{
+    color:#50504d;
+}
+
+nav{
+    display:flex;
+    gap:28px;
+
+    font-family:"DM Mono",monospace;
+    font-size:10px;
+    text-transform:uppercase;
+}
+
+nav a{
+    color:#70706c;
+    transition:.25s;
+}
+
+nav a:hover{
+    color:#fff;
+}
+
+
+/* =========================================================
+HERO
+========================================================= */
+
+.hero{
+    min-height:calc(100vh - 76px);
+
+    display:flex;
+    align-items:center;
+
+    border-bottom:1px solid #222;
+
+    padding:80px 0;
+}
+
+.hero-grid{
+
+    display:grid;
+
+    grid-template-columns:minmax(0,1fr) 360px;
+
+    gap:90px;
+
+    align-items:center;
+}
+
+.terminal{
+
+    margin-bottom:30px;
+
+    font-family:"DM Mono",monospace;
+
+    font-size:11px;
+
+    color:#5e5e5b;
+}
+
+.terminal .green{
+    color:#baff63;
+}
+
+.hero h1{
+
+    font-size:clamp(4.5rem,9vw,9rem);
+
+    line-height:.84;
+
+    letter-spacing:-.09em;
+
+    font-weight:600;
+}
+
+.hero h1 span{
+    color:#4c4c49;
+}
+
+.hero-description{
+
+    max-width:580px;
+
+    margin-top:42px;
+
+    color:#858581;
+
+    font-size:16px;
+
+    line-height:1.8;
+}
+
+.hero-description strong{
+    color:#eee;
+    font-weight:500;
+}
+
+.hero-bottom{
+    margin-top:48px;
+}
+
+.hero-link{
+
+    display:inline-flex;
+    align-items:center;
+    gap:12px;
+
+    padding:14px 18px;
+
+    border:1px solid #30302e;
+
+    font-family:"DM Mono",monospace;
+
+    font-size:10px;
+
+    text-transform:uppercase;
+
+    transition:.3s;
+}
+
+.hero-link:hover{
+    background:#fff;
+    color:#000;
+    border-color:#fff;
+}
+
+
+/* =========================================================
+PHOTO
+========================================================= */
+
+.hero-photo-area{
+    position:relative;
+}
+
+.photo-frame{
+
+    position:relative;
+
+    width:100%;
+
+    aspect-ratio:4 / 5;
+
+    overflow:hidden;
+
+    background:#111;
+
+    border:1px solid #292927;
+}
+
+.photo-frame::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:18px;
+    left:18px;
+
+    width:42px;
+    height:42px;
+
+    border-top:1px solid rgba(255,255,255,.45);
+    border-left:1px solid rgba(255,255,255,.45);
+
+    z-index:3;
+}
+
+.photo-frame::after{
+
+    content:"";
+
+    position:absolute;
+
+    right:18px;
+    bottom:18px;
+
+    width:42px;
+    height:42px;
+
+    border-right:1px solid rgba(255,255,255,.45);
+    border-bottom:1px solid rgba(255,255,255,.45);
+
+    z-index:3;
+}
+
+.photo-frame img{
+
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    filter:grayscale(100%);
+
+    transition:
+        filter .6s ease,
+        transform .8s cubic-bezier(.16,1,.3,1);
+}
+
+.photo-frame:hover img{
+
+    filter:grayscale(0%);
+
+    transform:scale(1.035);
+}
+
+.photo-label{
+
+    position:absolute;
+
+    left:18px;
+    bottom:18px;
+
+    z-index:4;
+
+    font-family:"DM Mono",monospace;
+
+    font-size:9px;
+
+    line-height:1.6;
+
+    color:#fff;
+
+    text-transform:uppercase;
+
+    text-shadow:0 1px 10px #000;
+}
+
+.photo-label span{
+    color:#aaa;
+}
+
+.photo-number{
+
+    position:absolute;
+
+    right:-22px;
+    top:30px;
+
+    font-family:"DM Mono",monospace;
+
+    font-size:9px;
+
+    color:#555;
+
+    writing-mode:vertical-rl;
+}
+
+.photo-meta{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    margin-top:13px;
+
+    font-family:"DM Mono",monospace;
+
+    font-size:9px;
+
+    color:#555;
+}
+
+.photo-meta strong{
+    color:#aaa;
+    font-weight:400;
+}
+
+
+/* =========================================================
+SECTIONS
+========================================================= */
+
+section{
+    border-bottom:1px solid #222;
+}
+
+.section{
+    padding:125px 0;
+}
+
+.section-head{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:flex-start;
+
+    margin-bottom:75px;
+}
+
+.section-number{
+
+    font-family:"DM Mono",monospace;
+
+    font-size:10px;
+
+    color:#50504d;
+}
+
+.section-title{
+
+    font-family:"DM Mono",monospace;
+
+    font-size:10px;
+
+    color:#777;
+
+    text-transform:uppercase;
+}
+
+
+/* =========================================================
+ABOUT
+========================================================= */
+
+.about-grid{
+
+    display:grid;
+
+    grid-template-columns:1.1fr .9fr;
+
+    gap:120px;
+}
+
+.about-statement{
+
+    font-size:clamp(2.5rem,4.5vw,4.8rem);
+
+    line-height:1.01;
+
+    letter-spacing:-.07em;
+}
+
+.about-statement span{
+    color:#4e4e4b;
+}
+
+.about-copy{
+    max-width:430px;
+}
+
+.about-copy p{
+
+    color:#777;
+
+    font-size:14px;
+
+    line-height:1.9;
+}
+
+.about-copy p + p{
+    margin-top:25px;
+}
+
+
+/* =========================================================
+STATS
+========================================================= */
+
+.about-stats{
+
+    margin-top:55px;
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    border-top:1px solid #222;
+
+    border-bottom:1px solid #222;
+}
+
+.stat{
+    padding:20px 0;
+}
+
+.stat + .stat{
+    border-left:1px solid #222;
+    padding-left:20px;
+}
+
+.stat-number{
+
+    font-size:22px;
+
+    font-weight:500;
+
+    letter-spacing:-.05em;
+}
+
+.stat-label{
+
+    margin-top:5px;
+
+    font-family:"DM Mono",monospace;
+
+    font-size:8px;
+
+    color:#555;
+
+    text-transform:uppercase;
+}
+
+
+/* =========================================================
+FORMAÇÃO
+========================================================= */
+
+.education{
+    margin-top:100px;
+    border-top:1px solid #222;
+}
+
+.education-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:25px 0;
+
+    border-bottom:1px solid #222;
+}
+
+.education-label{
+
+    font-family:"DM Mono",monospace;
+
+    font-size:10px;
+
+    color:#777;
+
+    text-transform:uppercase;
+}
+
+.education-status{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    font-family:"DM Mono",monospace;
+
+    font-size:9px;
+
+    color:#666;
+}
+
+.education-status::before{
+
+    content:"";
+
+    width:6px;
+    height:6px;
+
+    border-radius:50%;
+
+    background:#baff63;
+
+    box-shadow:0 0 0 4px rgba(186,255,99,.06);
+}
+
+.education-list{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:1px;
+
+    background:#222;
+}
+
+.education-item{
+
+    background:#050505;
+
+    padding:35px 30px 40px;
+
+    min-height:190px;
+}
+
+.education-year{
+
+    font-family:"DM Mono",monospace;
+
+    font-size:9px;
+
+    color:#555;
+
+    margin-bottom:38px;
+}
+
+.education-course{
+
+    font-size:23px;
+
+    font-weight:500;
+
+    line-height:1.1;
+
+    letter-spacing:-.045em;
+}
+
+.education-school{
+
+    margin-top:12px;
+
+    font-size:13px;
+
+    line-height:1.6;
+
+    color:#70706c;
+}
+
+.education-detail{
+
+    margin-top:20px;
+
+    font-family:"DM Mono",monospace;
+
+    font-size:8px;
+
+    color:#4e4e4b;
+
+    text-transform:uppercase;
+}
+
+
+/* =========================================================
+PORTFOLIO
+========================================================= */
+
+.portfolio-grid{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:1px;
+
+    background:#222;
+
+    border:1px solid #222;
+}
+
+.project{
+
+    background:#050505;
+
+    overflow:hidden;
+
+    transition:.35s;
+}
+
+.project:hover{
+    background:#090909;
+}
+
+.project-image{
+
+    position:relative;
+
+    width:100%;
+
+    aspect-ratio:16 / 10;
+
+    overflow:hidden;
+
+    background:#111;
+
+    border-bottom:1px solid #222;
+}
+
+.project-image img{
+
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    filter:grayscale(100%);
+
+    transition:
+        transform .7s cubic-bezier(.16,1,.3,1),
+        filter .5s ease;
+}
+
+.project:hover .project-image img{
+
+    transform:scale(1.045);
+
+    filter:grayscale(0%);
+}
+
+.fake-site{
+
+    width:100%;
+    height:100%;
+
+    padding:20px;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+
+    background:#e9e9e6;
+    color:#111;
+}
+
+.fake-site.dark{
+    background:#101010;
+    color:#eee;
+}
+
+.fake-bar{
+
+    width:55px;
+    height:4px;
+
+    background:currentColor;
+
+    opacity:.8;
+}
+
+.fake-content{
+
+    font-size:35px;
+
+    line-height:.9;
+
+    font-weight:700;
+
+    letter-spacing:-.07em;
+}
+
+.fake-button{
+
+    align-self:flex-start;
+
+    border:1px solid currentColor;
+
+    padding:7px 11px;
+
+    font-family:"DM Mono",monospace;
+
+    font-size:7px;
+}
+
+.project-info{
+    padding:24px 22px 26px;
+}
+
+.project-top{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    margin-bottom:25px;
+}
+
+.project-index,
+.project-type{
+
+    font-family:"DM Mono",monospace;
+
+    font-size:8px;
+
+    color:#555;
+
+    text-transform:uppercase;
+}
+
+.project-title{
+
+    font-size:22px;
+
+    letter-spacing:-.045em;
+
+    font-weight:500;
+}
+
+.project-description{
+
+    margin-top:10px;
+
+    font-size:12px;
+
+    line-height:1.7;
+
+    color:#666;
+}
+
+
+/* =========================================================
+SERVICES
+========================================================= */
+
+.services{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    border-top:1px solid #222;
+}
+
+.service{
+
+    min-height:240px;
+
+    padding:38px 30px;
+
+    border-bottom:1px solid #222;
+}
+
+.service:nth-child(odd){
+    border-right:1px solid #222;
+}
+
+.service-number{
+
+    font-family:"DM Mono",monospace;
+
+    color:#555;
+
+    font-size:9px;
+
+    margin-bottom:45px;
+}
+
+.service h3{
+
+    font-size:23px;
+
+    font-weight:500;
+
+    letter-spacing:-.04em;
+
+    margin-bottom:14px;
+}
+
+.service p{
+
+    max-width:410px;
+
+    font-size:13px;
+
+    line-height:1.8;
+
+    color:#666;
+}
+
+
+/* =========================================================
+CODE
+========================================================= */
+
+.code-section{
+    background:#080808;
+}
+
+.code-box{
+
+    border:1px solid #252523;
+
+    background:#050505;
+
+    padding:30px;
+
+    font-family:"DM Mono",monospace;
+
+    font-size:11px;
+
+    line-height:2;
+
+    color:#60605c;
+}
+
+.code-top{
+
+    display:flex;
+
+    gap:7px;
+
+    padding-bottom:22px;
+
+    margin-bottom:25px;
+
+    border-bottom:1px solid #181818;
+}
+
+.dot{
+
+    width:7px;
+    height:7px;
+
+    border-radius:50%;
+
+    background:#333;
+}
+
+.code-green{
+    color:#baff63;
+}
+
+.code-white{
+    color:#ddd;
+}
+
+
+/* =========================================================
+CONTATO
+========================================================= */
+
+.contact{
+
+    min-height:85vh;
+
+    display:flex;
+
+    align-items:center;
+}
+
+.contact-small{
+
+    font-family:"DM Mono",monospace;
+
+    font-size:10px;
+
+    color:#555;
+
+    margin-bottom:35px;
+}
+
+.contact h2{
+
+    font-size:clamp(4rem,9vw,9rem);
+
+    line-height:.84;
+
+    letter-spacing:-.085em;
+
+    font-weight:600;
+}
+
+.contact h2 span{
+    color:#50504d;
+}
+
+.contact-description{
+
+    max-width:520px;
+
+    margin-top:38px;
+
+    color:#777;
+
+    font-size:14px;
+
+    line-height:1.8;
+}
+
+
+/* =========================================================
+CONTACT BUTTONS — NOVO DESIGN
+========================================================= */
+
+.contact-links{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    max-width:720px;
+
+    margin-top:50px;
+
+    gap:12px;
+}
+
+
+/* BASE */
+
+.contact-link{
+
+    position:relative;
+
+    min-height:118px;
+
+    padding:22px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:space-between;
+
+    overflow:hidden;
+
+    border:1px solid #282826;
+
+    background:#080808;
+
+    transition:
+        transform .35s cubic-bezier(.16,1,.3,1),
+        border-color .35s ease,
+        background .35s ease;
+}
+
+
+/* NUMERO */
+
+.contact-link::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    right:0;
+
+    width:1px;
+    height:100%;
+
+    background:#333;
+
+    transform:scaleY(0);
+
+    transform-origin:bottom;
+
+    transition:.4s;
+}
+
+
+/* PARTE SUPERIOR */
+
+.contact-link-top{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+}
+
+
+/* ICON */
+
+.contact-icon{
+
+    width:31px;
+    height:31px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    border:1px solid #353533;
+
+    font-family:"DM Mono",monospace;
+
+    font-size:12px;
+
+    color:#aaa;
+
+    transition:.3s;
+}
+
+
+/* LABEL */
+
+.contact-label{
+
+    font-family:"DM Mono",monospace;
+
+    font-size:9px;
+
+    color:#555;
+
+    text-transform:uppercase;
+
+    letter-spacing:.05em;
+}
+
+
+/* TITULO */
+
+.contact-name{
+
+    font-size:20px;
+
+    font-weight:500;
+
+    letter-spacing:-.04em;
+}
+
+
+/* DESTINO */
+
+.contact-address{
+
+    font-family:"DM Mono",monospace;
+
+    font-size:8px;
+
+    color:#555;
+
+    white-space:nowrap;
+
+    overflow:hidden;
+
+    text-overflow:ellipsis;
+
+    max-width:90%;
+}
+
+
+/* SETA */
+
+.contact-arrow{
+
+    position:absolute;
+
+    right:20px;
+    bottom:19px;
+
+    font-family:"DM Mono",monospace;
+
+    font-size:15px;
+
+    color:#555;
+
+    transition:.3s;
+}
+
+
+/* HOVER GERAL */
+
+.contact-link:hover{
+
+    transform:translateY(-4px);
+
+    border-color:#555;
+
+    background:#0c0c0c;
+}
+
+.contact-link:hover::before{
+
+    transform:scaleY(1);
+}
+
+.contact-link:hover .contact-icon{
+
+    color:#fff;
+
+    border-color:#777;
+
+    transform:rotate(-5deg);
+}
+
+.contact-link:hover .contact-arrow{
+
+    color:#fff;
+
+    transform:translate(4px,-4px);
+}
+
+
+/* WHATSAPP */
+
+.contact-whatsapp:hover{
+
+    border-color:#777;
+
+}
+
+.contact-whatsapp:hover .contact-icon{
+
+    background:#fff;
+
+    color:#000;
+
+    border-color:#fff;
+}
+
+
+/* EMAIL */
+
+.contact-email:hover .contact-icon{
+
+    background:#fff;
+
+    color:#000;
+
+    border-color:#fff;
+}
+
+
+/* =========================================================
+CONTACT DETAILS
+========================================================= */
+
+.contact-details{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:1px;
+
+    margin-top:18px;
+
+    max-width:720px;
+
+    background:#222;
+
+    border:1px solid #222;
+}
+
+.contact-detail{
+
+    background:#050505;
+
+    padding:18px 20px;
+
+    transition:.25s;
+}
+
+.contact-detail:hover{
+    background:#090909;
+}
+
+.contact-detail-label{
+
+    font-family:"DM Mono",monospace;
+
+    font-size:8px;
+
+    color:#555;
+
+    text-transform:uppercase;
+
+    margin-bottom:9px;
+}
+
+.contact-detail-value{
+
+    font-size:12px;
+
+    color:#aaa;
+
+    word-break:break-word;
+}
+
+
+/* =========================================================
+FOOTER
+========================================================= */
+
+footer{
+
+    border-top:1px solid #222;
+
+    padding:24px 0;
+}
+
+.footer-inner{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    font-family:"DM Mono",monospace;
+
+    font-size:9px;
+
+    color:#444;
+}
+
+
+/* =========================================================
+REVEAL
+========================================================= */
+
+.reveal{
+
+    opacity:0;
+
+    transform:translateY(20px);
+
+    transition:
+        opacity .7s ease,
+        transform .7s cubic-bezier(.16,1,.3,1);
+}
+
+.reveal.show{
+
+    opacity:1;
+
+    transform:translateY(0);
+}
+
+
+/* =========================================================
+GLITCH
+========================================================= */
+
+.glitch:hover{
+    animation:glitch .22s steps(2);
+}
+
+@keyframes glitch{
+
+    0%{
+        transform:translate(0);
+    }
+
+    30%{
+        transform:translate(-2px,1px);
+    }
+
+    60%{
+        transform:translate(2px,-1px);
+    }
+
+    100%{
+        transform:translate(0);
+    }
+}
+
+
+/* =========================================================
+MOBILE
+========================================================= */
+
+@media(max-width:760px){
+
+    .container{
+        width:88%;
+    }
+
+    header{
+        height:65px;
+    }
+
+    .header-inner{
+        width:88%;
+    }
+
+    .logo{
+        font-size:11px;
+    }
+
+    nav{
+        gap:15px;
+        font-size:8px;
+    }
+
+
+    /* HERO */
+
+    .hero{
+
+        min-height:auto;
+
+        padding:70px 0 90px;
+    }
+
+    .hero-grid{
+
+        grid-template-columns:1fr;
+
+        gap:65px;
+    }
+
+    .hero h1{
+
+        font-size:clamp(3.8rem,17vw,6rem);
+    }
+
+    .hero-description{
+
+        font-size:14px;
+
+        margin-top:32px;
+    }
+
+    .hero-bottom{
+        margin-top:35px;
+    }
+
+    .hero-photo-area{
+
+        width:86%;
+
+        margin:auto;
+    }
+
+
+    /* SECTIONS */
+
+    .section{
+        padding:90px 0;
+    }
+
+    .section-head{
+        margin-bottom:50px;
+    }
+
+
+    /* ABOUT */
+
+    .about-grid{
+
+        grid-template-columns:1fr;
+
+        gap:50px;
+    }
+
+    .about-statement{
+        font-size:2.5rem;
+    }
+
+    .about-stats{
+        margin-top:40px;
+    }
+
+
+    /* EDUCATION */
+
+    .education{
+        margin-top:70px;
+    }
+
+    .education-list{
+        grid-template-columns:1fr;
+    }
+
+    .education-item{
+        min-height:170px;
+        padding:30px 22px;
+    }
+
+
+    /* PORTFOLIO */
+
+    .portfolio-grid{
+        grid-template-columns:1fr;
+    }
+
+
+    /* SERVICES */
+
+    .services{
+        grid-template-columns:1fr;
+    }
+
+    .service{
+        min-height:210px;
+        padding:32px 0;
+    }
+
+    .service:nth-child(odd){
+        border-right:none;
+    }
+
+
+    /* CODE */
+
+    .code-box{
+
+        padding:20px;
+
+        font-size:9px;
+
+        overflow-x:auto;
+    }
+
+
+    /* CONTACT */
+
+    .contact{
+        min-height:80vh;
+    }
+
+    .contact h2{
+
+        font-size:clamp(3.8rem,17vw,6rem);
+    }
+
+    .contact-description{
+        font-size:13px;
+    }
+
+
+    /* NOVOS BOTÕES */
+
+    .contact-links{
+
+        grid-template-columns:1fr;
+
+        gap:9px;
+
+        margin-top:40px;
+    }
+
+    .contact-link{
+
+        min-height:110px;
+
+        padding:20px;
+    }
+
+    .contact-name{
+        font-size:19px;
+    }
+
+    .contact-details{
+
+        grid-template-columns:1fr;
+
+        margin-top:9px;
+    }
+
+
+    /* FOOTER */
+
+    .footer-inner{
+
+        flex-direction:column;
+
+        gap:12px;
+    }
+
+}
+
+
+/* =========================================================
+REDUCE MOTION
+========================================================= */
+
+@media(prefers-reduced-motion:reduce){
+
+    *{
+
+        animation:none!important;
+
+        transition:none!important;
+
+        scroll-behavior:auto!important;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+HEADER
+===================================================== -->
+
+<header>
+
+<div class="header-inner">
+
+<a href="#" class="logo">
+JUAN FARIAS <span>/ DEV</span>
+</a>
+
+<nav>
+
+<a href="#sobre">sobre</a>
+
+<a href="#formacao">formação</a>
+
+<a href="#portfolio">projetos</a>
+
+<a href="#contato">contato</a>
+
+</nav>
+
+</div>
+
+</header>
+
+
+
+<main>
+
+
+<!-- =====================================================
+HERO
+===================================================== -->
+
+<section class="hero">
+
+<div class="container">
+
+<div class="hero-grid">
+
+
+<div>
+
+<div class="terminal">
+
+<span class="green">
+juan@dev
+</span>:~$
+
+<span id="command"></span>
+
+</div>
+
+
+<h1 class="glitch reveal">
+
+FRONT-END<br>
+
+<span>
+DEVELOPER.
+</span>
+
+</h1>
+
+
+<p class="hero-description reveal">
+
+Eu crio landing pages que ajudam empresas
+e profissionais a <strong>passarem confiança</strong>
+para quem está conhecendo o negócio pela primeira vez.
+
+</p>
+
+
+<div class="hero-bottom reveal">
+
+<a href="#portfolio" class="hero-link">
+
+VER MEUS PROJETOS
+
+<span>
+↗
+</span>
+
+</a>
+
+</div>
+
+</div>
+
+
+
+<!-- FOTO -->
+
+<div class="hero-photo-area reveal">
+
+<div class="photo-frame">
+
+<img
+src="foto.png"
+alt="Juan Farias — Desenvolvedor Front-end"
+>
+
+<div class="photo-label">
+
+JUAN FARIAS<br>
+
+<span>FRONT-END DEVELOPER</span>
+
+</div>
+
+</div>
+
+<div class="photo-number">
+001 / PROFILE
+</div>
+
+<div class="photo-meta">
+
+<strong>
+AVAILABLE
+</strong>
+
+<span>
+2026
+</span>
+
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+SOBRE
+===================================================== -->
+
+<section id="sobre">
+
+<div class="container section">
+
+<div class="section-head">
+
+<div class="section-number">
+01
+</div>
+
+<div class="section-title">
+Sobre mim
+</div>
+
+</div>
+
+
+<div class="about-grid">
+
+
+<div class="about-statement reveal">
+
+Seu site pode ser
+o primeiro contato
+de um cliente com
+o seu negócio.
+
+<span>
+Ele precisa fazer
+esse contato valer a pena.
+</span>
+
+</div>
+
+
+<div class="about-copy reveal">
+
+<p>
+
+Sou Juan, desenvolvedor Front-end
+especializado em landing pages.
+
+</p>
+
+
+<p>
+
+Meu trabalho é criar uma presença digital
+profissional para empresas, serviços e
+profissionais que precisam apresentar
+melhor o que fazem.
+
+</p>
+
+
+<p>
+
+A ideia é simples: quando alguém receber
+seu link, pesquisar seu nome ou encontrar
+seu negócio, o site precisa transmitir
+segurança suficiente para incentivar
+o próximo passo.
+
+</p>
+
+
+<div class="about-stats">
+
+
+<div class="stat">
+
+<div class="stat-number">
+01
+</div>
+
+<div class="stat-label">
+Especialidade
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<div class="stat-number">
+100%
+</div>
+
+<div class="stat-label">
+Responsivo
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<div class="stat-number">
+∞
+</div>
+
+<div class="stat-label">
+Detalhes
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- =====================================================
+FORMAÇÃO
+===================================================== -->
+
+<div id="formacao" class="education reveal">
+
+
+<div class="education-header">
+
+<div class="education-label">
+Formação
+</div>
+
+<div class="education-status">
+EM FORMAÇÃO
+</div>
+
+</div>
+
+
+<div class="education-list">
+
+
+<div class="education-item">
+
+<div class="education-year">
+FORMAÇÃO TÉCNICA
+</div>
+
+<div class="education-course">
+Técnico em Informática
+</div>
+
+<div class="education-school">
+EEEP Dep. José Maria Melo
+</div>
+
+<div class="education-detail">
+Concluído
+</div>
+
+</div>
+
+
+<div class="education-item">
+
+<div class="education-year">
+GRADUAÇÃO
+</div>
+
+<div class="education-course">
+Sistemas para Internet
+</div>
+
+<div class="education-school">
+Instituto Federal de Educação,
+Ciência e Tecnologia da Paraíba — IFPB
+</div>
+
+<div class="education-detail">
+Em andamento
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+PORTFOLIO
+===================================================== -->
+
+<section id="portfolio">
+
+<div class="container section">
+
+<div class="section-head">
+
+<div class="section-number">
+02
+</div>
+
+<div class="section-title">
+Projetos selecionados
+</div>
+
+</div>
+
+
+<div class="portfolio-grid">
+
+
+<a href="#" class="project reveal">
+
+<div class="project-image">
+
+<img
+src="projeto-1.png"
+alt="Projeto de Landing Page"
+onerror="this.style.display='none'"
+>
+
+<div class="fake-site">
+
+<div class="fake-bar"></div>
+
+<div class="fake-content">
+
+YOUR<br>
+BUSINESS<br>
+ONLINE.
+
+</div>
+
+<div class="fake-button">
+EXPLORE
+</div>
+
+</div>
+
+</div>
+
+
+<div class="project-info">
+
+<div class="project-top">
+
+<span class="project-index">
+01
+</span>
+
+<span class="project-type">
+LANDING PAGE
+</span>
+
+</div>
+
+<div class="project-title">
+Projeto de Landing Page
+</div>
+
+<div class="project-description">
+Apresentação profissional e foco em conversão.
+</div>
+
+</div>
+
+</a>
+
+
+
+<a href="#" class="project reveal">
+
+<div class="project-image">
+
+<img
+src="projeto-2.png"
+alt="Projeto de Landing Page"
+onerror="this.style.display='none'"
+>
+
+<div class="fake-site dark">
+
+<div class="fake-bar"></div>
+
+<div class="fake-content">
+
+YOUR<br>
+NEXT<br>
+CLIENT.
+
+</div>
+
+<div class="fake-button">
+START
+</div>
+
+</div>
+
+</div>
+
+
+<div class="project-info">
+
+<div class="project-top">
+
+<span class="project-index">
+02
+</span>
+
+<span class="project-type">
+BEAUTY
+</span>
+
+</div>
+
+<div class="project-title">
+Landing Page — Beauty
+</div>
+
+<div class="project-description">
+Uma apresentação pensada para gerar interesse e contato.
+</div>
+
+</div>
+
+</a>
+
+
+
+<a href="#" class="project reveal">
+
+<div class="project-image">
+
+<img
+src="projeto-3.png"
+alt="Projeto FinDash"
+onerror="this.style.display='none'"
+>
+
+<div class="fake-site dark">
+
+<div class="fake-bar"></div>
+
+<div class="fake-content">
+
+FIN<br>
+DASH.
+
+</div>
+
+<div class="fake-button">
+OPEN
+</div>
+
+</div>
+
+</div>
+
+
+<div class="project-info">
+
+<div class="project-top">
+
+<span class="project-index">
+03
+</span>
+
+<span class="project-type">
+INTERFACE
+</span>
+
+</div>
+
+<div class="project-title">
+FinDash
+</div>
+
+<div class="project-description">
+Interface web para visualização e controle financeiro.
+</div>
+
+</div>
+
+</a>
+
+
+
+<a href="#" class="project reveal">
+
+<div class="project-image">
+
+<img
+src="projeto-4.png"
+alt="Projeto Web"
+onerror="this.style.display='none'"
+>
+
+<div class="fake-site">
+
+<div class="fake-bar"></div>
+
+<div class="fake-content">
+
+MAKE<br>
+THE FIRST<br>
+MOVE.
+
+</div>
+
+<div class="fake-button">
+DISCOVER
+</div>
+
+</div>
+
+</div>
+
+
+<div class="project-info">
+
+<div class="project-top">
+
+<span class="project-index">
+04
+</span>
+
+<span class="project-type">
+WEB
+</span>
+
+</div>
+
+<div class="project-title">
+Projeto Especial
+</div>
+
+<div class="project-description">
+Experiência digital desenvolvida sob medida.
+</div>
+
+</div>
+
+</a>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+SERVIÇOS
+===================================================== -->
+
+<section>
+
+<div class="container section">
+
+<div class="section-head">
+
+<div class="section-number">
+03
+</div>
+
+<div class="section-title">
+O que eu faço
+</div>
+
+</div>
+
+
+<div class="services">
+
+
+<div class="service reveal">
+
+<div class="service-number">
+/ 01
+</div>
+
+<h3>
+Landing Pages
+</h3>
+
+<p>
+
+Páginas desenvolvidas para apresentar
+empresas, serviços e profissionais
+e transformar visitas em oportunidades
+de contato.
+
+</p>
+
+</div>
+
+
+
+<div class="service reveal">
+
+<div class="service-number">
+/ 02
+</div>
+
+<h3>
+Front-end
+</h3>
+
+<p>
+
+Desenvolvimento da interface para
+desktop e celular, com atenção à
+velocidade e ao funcionamento da página.
+
+</p>
+
+</div>
+
+
+
+<div class="service reveal">
+
+<div class="service-number">
+/ 03
+</div>
+
+<h3>
+Presença Digital
+</h3>
+
+<p>
+
+Uma página profissional para quando
+um potencial cliente pesquisar sua
+empresa ou receber seu link.
+
+</p>
+
+</div>
+
+
+
+<div class="service reveal">
+
+<div class="service-number">
+/ 04
+</div>
+
+<h3>
+Design & Interface
+</h3>
+
+<p>
+
+Estrutura visual pensada para que
+a informação mais importante seja
+encontrada rapidamente.
+
+</p>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+CODE
+===================================================== -->
+
+<section class="code-section">
+
+<div class="container section">
+
+<div class="section-head">
+
+<div class="section-number">
+04
+</div>
+
+<div class="section-title">
+Por trás da interface
+</div>
+
+</div>
+
+
+<div class="code-box reveal">
+
+<div class="code-top">
+
+<span class="dot"></span>
+<span class="dot"></span>
+<span class="dot"></span>
+
+</div>
+
+
+<div>
+
+<span class="code-green">
+const
+</span>
+
+website = {
+
+<br>
+
+&nbsp;&nbsp;firstImpression:
+
+<span class="code-white">
+"important"
+</span>,
+
+<br>
+
+&nbsp;&nbsp;trust:
+
+<span class="code-white">
+"high"
+</span>,
+
+<br>
+
+&nbsp;&nbsp;mobile:
+
+<span class="code-white">
+true
+</span>,
+
+<br>
+
+&nbsp;&nbsp;performance:
+
+<span class="code-white">
+"fast"
+</span>,
+
+<br>
+
+&nbsp;&nbsp;objective:
+
+<span class="code-white">
+"new clients"
+</span>
+
+<br>
+
+};
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+CONTATO
+===================================================== -->
+
+<section id="contato" class="contact">
+
+<div class="container">
+
+
+<div class="contact-small">
+05 / CONTATO
+</div>
+
+
+<h2 class="reveal">
+
+VAMOS<br>
+
+<span>
+FAZER UM SITE?
+</span>
+
+</h2>
+
+
+<p class="contact-description reveal">
+
+Se você quer apresentar melhor sua empresa,
+seu serviço ou seu trabalho na internet,
+me conte o que você tem em mente.
+
+</p>
+
+
+<!-- =====================================================
+BOTÕES
+===================================================== -->
+
+<div class="contact-links reveal">
+
+
+<!-- WHATSAPP -->
+
+<a
+href="https://wa.me/5585997557980"
+target="_blank"
+rel="noopener noreferrer"
+class="contact-link contact-whatsapp"
+>
+
+
+<div class="contact-link-top">
+
+<div class="contact-icon">
+↗
+</div>
+
+<div class="contact-label">
+Contato direto
+</div>
+
+</div>
+
+
+<div class="contact-name">
+WhatsApp
+</div>
+
+
+<div class="contact-address">
+(85) 99755-7980
+</div>
+
+
+<div class="contact-arrow">
+↗
+</div>
+
+
+</a>
+
+
+
+<!-- EMAIL -->
+
+<a
+href="mailto:juanfariasdevworktm@gmail.com"
+class="contact-link contact-email"
+>
+
+
+<div class="contact-link-top">
+
+<div class="contact-icon">
+@
+</div>
+
+<div class="contact-label">
+Contato profissional
+</div>
+
+</div>
+
+
+<div class="contact-name">
+E-mail
+</div>
+
+
+<div class="contact-address">
+juanfariasdevworktm@gmail.com
+</div>
+
+
+<div class="contact-arrow">
+↗
+</div>
+
+
+</a>
+
+
+</div>
+
+
+<!-- =====================================================
+INFORMAÇÕES
+===================================================== -->
+
+<div class="contact-details reveal">
+
+
+<a
+href="https://wa.me/5585997557980"
+target="_blank"
+rel="noopener noreferrer"
+class="contact-detail"
+>
+
+<div class="contact-detail-label">
+WhatsApp
+</div>
+
+<div class="contact-detail-value">
+(85) 99755-7980
+</div>
+
+</a>
+
+
+<a
+href="mailto:juanfariasdevworktm@gmail.com"
+class="contact-detail"
+>
+
+<div class="contact-detail-label">
+E-mail
+</div>
+
+<div class="contact-detail-value">
+juanfariasdevworktm@gmail.com
+</div>
+
+</a>
+
+
+</div>
+
+
+</div>
+
+</section>
+
+
+</main>
+
+
+
+<!-- =====================================================
+FOOTER
+===================================================== -->
+
+<footer>
+
+<div class="container footer-inner">
+
+<span>
+© 2026 JUAN FARIAS
+</span>
+
+<span>
+FRONT-END / LANDING PAGES
+</span>
+
+</div>
+
+</footer>
+
+
+
+<script>
+
+/* =========================================================
+TERMINAL
+========================================================= */
+
+const commandElement =
+document.getElementById("command");
+
+const command =
+" whoami";
+
+let index = 0;
+
+
+function typeCommand(){
+
+    if(index < command.length){
+
+        commandElement.textContent +=
+        command.charAt(index);
+
+        index++;
+
+        setTimeout(
+            typeCommand,
+            70
+        );
+
+    }
+
+}
+
+
+setTimeout(
+    typeCommand,
+    450
+);
+
+
+/* =========================================================
+SCROLL REVEAL
+========================================================= */
+
+const elements =
+document.querySelectorAll(".reveal");
+
+
+const observer =
+new IntersectionObserver(
+
+    entries => {
+
+        entries.forEach(entry => {
+
+            if(entry.isIntersecting){
+
+                entry.target.classList.add("show");
+
+                observer.unobserve(
+                    entry.target
+                );
+
+            }
+
+        });
+
+    },
+
+    {
+        threshold:.1
+    }
+
+);
+
+
+elements.forEach(
+    element => observer.observe(element)
+);
+
+
+/* =========================================================
+GLITCH
+========================================================= */
+
+const glitch =
+document.querySelector(".glitch");
+
+
+setInterval(() => {
+
+    if(Math.random() > .82){
+
+        glitch.style.transform =
+        `translateX(${Math.random()*3-1.5}px)`;
+
+        setTimeout(() => {
+
+            glitch.style.transform = "";
+
+        },100);
+
+    }
+
+},2300);
+
+</script>
+
+</body>
+
+</html>
